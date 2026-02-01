@@ -1,1 +1,88 @@
 @import "tailwindcss";
+
+@theme {
+    --color-app-bg: #F9F9FA;
+    --color-app-text: #34322D;
+    --color-app-text-secondary: #5E5E5B;
+    --color-app-border: rgba(0, 0, 0, 0.06);
+
+    --font-serif: "Libre Baskerville", serif;
+    --font-sans: "Inter", "system-ui", sans-serif;
+
+    /* Mapping Semantic Names to Original "Clean" Palette */
+    --color-border: var(--color-app-border);
+    --color-input: var(--color-app-border);
+    --color-ring: var(--color-app-text);
+
+    --color-background: var(--color-app-bg);
+    --color-foreground: var(--color-app-text);
+
+    --color-primary: var(--color-app-text);
+    --color-primary-foreground: #FFFFFF;
+
+    --color-secondary: #F4F4F5;
+    --color-secondary-foreground: var(--color-app-text);
+
+    --color-destructive: #ef4444;
+    --color-destructive-foreground: #FFFFFF;
+
+    --color-muted: #F4F4F5;
+    --color-muted-foreground: var(--color-app-text-secondary);
+
+    --color-accent: #ebebeb;
+    --color-accent-foreground: var(--color-app-text);
+
+    --color-popover: #FFFFFF;
+    --color-popover-foreground: var(--color-app-text);
+
+    --color-card: #FFFFFF;
+    --color-card-foreground: var(--color-app-text);
+
+    --radius-lg: 0.5rem;
+    --radius-md: calc(0.5rem - 2px);
+    --radius-sm: calc(0.5rem - 4px);
+}
+
+@utility container {
+    margin-inline: auto;
+    padding-inline: 2rem;
+
+    @media (width >=--theme(--breakpoint-sm)) {
+        max-width: none;
+    }
+
+    @media (width >=1400px) {
+        max-width: 1400px;
+    }
+}
+
+@layer base {
+
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-app-border, currentColor);
+    }
+}
+
+@layer base {
+    :root {
+        /* Re-declaring for fallback/compatibility if needed outside @theme context */
+        --color-app-bg: #F9F9FA;
+        --color-app-text: #34322D;
+        --color-app-text-secondary: #5E5E5B;
+        --color-app-border: rgba(0, 0, 0, 0.06);
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+}
