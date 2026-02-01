@@ -3,9 +3,25 @@ import { cn } from "@/lib/utils"
 
 const DropdownMenu = ({ children }: { children: React.ReactNode }) => {
     const [open, setOpen] = React.useState(false)
+    const timeoutRef = React.useRef<NodeJS.Timeout>(null)
+
+    const handleEnter = () => {
+        if (timeoutRef.current) clearTimeout(timeoutRef.current)
+        setOpen(true)
+    }
+
+    const handleLeave = () => {
+        timeoutRef.current = setTimeout(() => {
+            setOpen(false)
+        }, 150) // 150ms "hover tunnel" grace period
+    }
 
     return (
-        <div className="relative inline-block text-left" onMouseLeave={() => setOpen(false)}>
+        <div
+            className="relative inline-block text-left"
+            onMouseEnter={handleEnter}
+            onMouseLeave={handleLeave}
+        >
             {React.Children.map(children, child => {
                 if (React.isValidElement(child)) {
                     // @ts-ignore
@@ -31,9 +47,11 @@ const DropdownMenuContent = ({ align = "center", className, children, open }: an
     return (
         <div
             className={cn(
-                "absolute z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md animate-in data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+                "absolute z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md animate-in fade-in zoom-in-95 duration-200",
                 align === "start" ? "left-0" : align === "end" ? "right-0" : "left-1/2 -translate-x-1/2",
                 "mt-2 top-full",
+                // Safety bridge pseudo-element
+                "before:absolute before:-top-4 before:left-0 before:w-full before:h-4 before:content-['']",
                 className
             )}
         >
@@ -51,7 +69,7 @@ const DropdownMenuItem = React.forwardRef<
     <div
         ref={ref}
         className={cn(
-            "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors hover:bg-accent hover:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+            "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
             inset && "pl-8",
             className
         )}
