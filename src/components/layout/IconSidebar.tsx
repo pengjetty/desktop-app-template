@@ -15,7 +15,7 @@ interface IconSidebarProps {
 export function IconSidebar({ activePage, onNavigate }: IconSidebarProps) {
     return (
         <TooltipProvider>
-            <aside className="w-[52px] bg-[#ebebeb] border-r border-black/5 flex flex-col transition-all duration-300">
+            <aside className="w-[52px] bg-[#ebebeb] dark:bg-zinc-900 border-r border-black/5 dark:border-white/5 flex flex-col transition-all duration-300">
                 {/* Top Section */}
                 <div className="flex-1 flex flex-col items-center py-3 gap-1">
                     <NavIcon

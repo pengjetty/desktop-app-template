@@ -19,11 +19,11 @@ export function MessageBubble({ message }: { message: Message }) {
             {/* Avatar */}
             {/* Avatar */}
             {isUser ? (
-                <div className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center shrink-0">
+                <div className="w-8 h-8 rounded-full bg-black text-white dark:bg-zinc-200 dark:text-zinc-900 flex items-center justify-center shrink-0">
                     <User className="w-4 h-4" />
                 </div>
             ) : (
-                <div className="w-8 h-8 rounded-2xl bg-black text-white flex items-center justify-center shrink-0 shadow-lg shadow-black/10">
+                <div className="w-8 h-8 rounded-2xl bg-black text-white dark:bg-zinc-200 dark:text-zinc-900 flex items-center justify-center shrink-0 shadow-lg shadow-black/10">
                     <Bot className="w-5 h-5" />
                 </div>
             )}

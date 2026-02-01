@@ -39,10 +39,6 @@ Start the development server with hot reload:
 ```bash
 npm run desktop
 ```
-or 
-```bash
-npm run tauri dev
-```
 
 ### Building for Production
 

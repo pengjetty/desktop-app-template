@@ -67,7 +67,7 @@ export function ChatView() {
     }
 
     return (
-        <div className="flex flex-col h-full bg-background/50">
+        <div className="flex flex-col h-full">
             {/* Messages */}
             <div className="flex-1 overflow-y-auto px-4 py-8 space-y-8" ref={scrollRef}>
                 {messages.length === 0 ? (
@@ -80,7 +80,7 @@ export function ChatView() {
             </div>
 
             {/* Input Area */}
-            <div className="p-4 bg-gradient-to-t from-background via-background to-transparent pb-8">
+            <div className="p-4 pb-8">
                 <ChatInput
                     value={input}
                     onChange={setInput}

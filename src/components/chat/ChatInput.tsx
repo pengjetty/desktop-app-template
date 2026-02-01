@@ -27,8 +27,8 @@ export function ChatInput({ value, onChange, onSubmit, isProcessing }: ChatInput
     return (
         <TooltipProvider>
             <div className="w-full max-w-2xl mx-auto relative group">
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 rounded-[24px] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative w-full bg-white rounded-[22px] border border-[var(--color-app-border)] shadow-[0_12px_32px_rgba(0,0,0,0.02)] p-4 transition-shadow duration-300 hover:shadow-[0_12px_40px_rgba(0,0,0,0.05)]">
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 dark:from-blue-500/20 dark:via-purple-500/20 dark:to-pink-500/20 rounded-[24px] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative w-full bg-white dark:!bg-zinc-900 rounded-[22px] border border-[var(--color-app-border)] dark:border-zinc-800 shadow-[0_12px_32px_rgba(0,0,0,0.02)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.4)] p-4 transition-shadow duration-300 hover:shadow-[0_12px_40px_rgba(0,0,0,0.05)]">
                     <textarea
                         value={value}
                         onChange={(e) => onChange(e.target.value)}
