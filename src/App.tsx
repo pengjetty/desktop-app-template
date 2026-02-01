@@ -4,6 +4,7 @@ import { IconSidebar } from "@/components/layout/IconSidebar";
 import { Header } from "@/components/layout/Header";
 import { ChatView } from "@/components/chat/ChatView";
 import { PreviewPane } from "@/components/layout/PreviewPane";
+import { SettingsPage } from "@/components/settings/SettingsPage";
 
 // Placeholder views for other routes
 const PlaceholderView = ({ title }: { title: string }) => (
@@ -50,7 +51,8 @@ function App() {
               <Route path="/" element={<Navigate to="/chat" replace />} />
               <Route path="/chat" element={<ChatView />} />
               <Route path="/history" element={<PlaceholderView title="History" />} />
-              <Route path="/settings" element={<PlaceholderView title="Settings" />} />
+              <Route path="/history" element={<PlaceholderView title="History" />} />
+              <Route path="/settings" element={<SettingsPage />} />
               <Route path="*" element={<PlaceholderView title="Not Found" />} />
             </Routes>
           </div>
@@ -65,6 +67,7 @@ function App() {
         </div>
       </main>
 
+      {/* Global Modals */}
     </div>
   );
 }
